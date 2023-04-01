@@ -48,40 +48,43 @@ describe('Central de Atendimento ao Cliente TAT', function () {
         cy.get('.error').should('be.visible')
     })
 
-    it('preenche e limpa os campos nome, sobrenome, email e telefone', function(){
+    it('preenche e limpa os campos nome, sobrenome, email e telefone', function () {
         cy.get('#firstName')
-        .type('Luciana')
-        .should('have.value' , 'Luciana')
-        .clear()
-        .should('have.value' , '')
+            .type('Luciana')
+            .should('have.value', 'Luciana')
+            .clear()
+            .should('have.value', '')
 
         cy.get('#lastName')
-        .type('Silveira')
-        .should('have.value' , 'Silveira')
-        .clear()
-        .should('have.value' , '')
+            .type('Silveira')
+            .should('have.value', 'Silveira')
+            .clear()
+            .should('have.value', '')
 
         cy.get('#email')
-        .type('luciana@gmail.com')
-        .should('have.value' , 'luciana@gmail.com')
-        .clear()
-        .should('have.value' , '')
+            .type('luciana@gmail.com')
+            .should('have.value', 'luciana@gmail.com')
+            .clear()
+            .should('have.value', '')
 
         cy.get('#phone')
-        .type('1234567890')
-        .should('have.value' , '1234567890')
-        .clear()
-        .should('have.value' , '')
+            .type('1234567890')
+            .should('have.value', '1234567890')
+            .clear()
+            .should('have.value', '')
     })
 
-    it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios.', function(){
+    it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios.', function () {
         cy.get('button[type="submit"]').click()
 
         cy.get('.error').should('be.visible')
     })
 
-    
-
+    it.only('Envia o formulário com sucesso usando um comando customizado', function () {
+        cy.filMandatoryFieldsAndSumit()
+        
+        cy.get('.success').should('be.visible')
+    })
 })
 
 
