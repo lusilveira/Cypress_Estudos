@@ -117,7 +117,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
             
     })
 
-    it.only('marca cada tipo de atendimento', function(){
+    it('marca cada tipo de atendimento', function(){
         cy.get('input[type="radio"]')
         .should('have.length', 3 )
         .each(function($radio){
